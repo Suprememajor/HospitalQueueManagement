@@ -14,7 +14,7 @@ import java.util.List;
 public class AppController {
     private final HospitalService hospitalService;
 
-    @RequestMapping("/")
+    @RequestMapping("/err")
     public String viewHomePage(Model model) {
         List<Hospital> listProducts = hospitalService.findAll();
         model.addAttribute("hospitalList", listProducts);
