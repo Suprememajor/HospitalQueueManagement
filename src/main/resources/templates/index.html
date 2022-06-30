@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospitals</title>
+</head>
+<body>
+<div align="center">
+    <h1>Hospitals</h1>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>Hospital Name</th>
+            <th>Location</th>
+            <th>Contact</th>
+            <th>Website</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="hospital : ${hospitalList}">
+            <td th:text="${hospital.name}">Hospital Name</td>
+            <td th:text="${hospital.location}">Location</td>
+            <td th:text="${hospital.contact}">Contact</td>
+            <td th:text="${hospital.website}">Website</td>
+            <td th:text="${hospital.email}">Email</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div align="center">
+    <h1>Product Manager</h1>
+    <a href="new">Create New Product </a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Made In</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="hospital : ${hospitalList}">
+            <td th:text="${hospital.name}">Hospital Name</td>
+            <td th:text="${hospital.location}">Location</td>
+            <td th:text="${hospital.contact}">Contact</td>
+            <td th:text="${hospital.website}">Website</td>
+            <td th:text="${hospital.email}">Email</td>
+            <td>
+                <a th:href="@{'/edit/' + ${product.id}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete/' + ${product.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
