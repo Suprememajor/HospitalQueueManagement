@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.supremecorp.hospitalqueuemanagement.model.Appointment;
 import org.supremecorp.hospitalqueuemanagement.model.Hospital;
+import org.supremecorp.hospitalqueuemanagement.model.Unit;
 import org.supremecorp.hospitalqueuemanagement.services.base.AppointmentService;
 import org.supremecorp.hospitalqueuemanagement.services.base.HospitalService;
 import org.supremecorp.hospitalqueuemanagement.services.base.UnitService;
@@ -25,14 +26,15 @@ public class AppController {
 
     @RequestMapping("/")
     public String viewHomePage(Model model) {
-        List<Hospital> listProducts = hospitalService.findAll();
-        model.addAttribute("hospitalList", listProducts);
+        List<Hospital> hospitalList = hospitalService.findAll();
+        model.addAttribute("hospitalList", hospitalList);
         return "index";
     }
 
-    @RequestMapping("/new")
-    public String showNewProductForm(Model model) {
+    @RequestMapping("/new_appointment/{unitId}")
+    public String showNewProductForm(Model model, @PathVariable String unitId) {
         Appointment appointment = new Appointment();
+        appointment.setUnit(unitService.findById(unitId));
         model.addAttribute("appointment", appointment);
 
         return "new_appointment";
@@ -40,16 +42,23 @@ public class AppController {
 
     @RequestMapping("/admin")
     public String viewAdminHomePage(Model model) {
-        List<Hospital> listProducts = hospitalService.findAll();
-        model.addAttribute("hospitalList", listProducts);
+        List<Hospital> hospitalList = hospitalService.findAll();
+        model.addAttribute("hospitalList", hospitalList);
         return "admin/index";
     }
 
-    @RequestMapping(value = "/save/{unitId}", method = RequestMethod.POST)
-    public String makeAppointment(@ModelAttribute("appointment") Appointment appointment, @PathVariable int unitId) throws IOException {
-        //appointment.setUnit(unitService.findById(unitId));
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String makeAppointment(@ModelAttribute("appointment") Appointment appointment) throws IOException {
         appointmentService.save(appointment);
         return "redirect:/";
+    }
+
+    @RequestMapping("/view/{hospitalId}")
+    public String viewHospital(Model model, @PathVariable String hospitalId) throws IOException {
+        Hospital hospital = hospitalService.findById(hospitalId);
+        List<Unit> unitList = unitService.findAllByHospital(hospital);
+        model.addAttribute("unitList", unitList);
+        return "hospital";
     }
 
 }

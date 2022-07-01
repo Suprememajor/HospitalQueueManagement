@@ -6,7 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.supremecorp.hospitalqueuemanagement.model.Hospital;
+import org.supremecorp.hospitalqueuemanagement.model.Unit;
 import org.supremecorp.hospitalqueuemanagement.services.base.HospitalService;
+import org.supremecorp.hospitalqueuemanagement.services.base.UnitService;
 
 @SpringBootApplication
 public class HospitalQueueManagementApplication {
@@ -21,7 +23,8 @@ public class HospitalQueueManagementApplication {
     }
 
     @Bean
-    CommandLineRunner commandLineRunner(HospitalService hospitalService) {
+    CommandLineRunner commandLineRunner(HospitalService hospitalService,
+                                        UnitService unitService) {
         return args -> {
             Hospital hospital1 = new Hospital(
                     "Buea Regional Hospital",
@@ -37,8 +40,39 @@ public class HospitalQueueManagementApplication {
                     "www.limberegionalhospitalwebsite.com",
                     "limberegionalhospital@gmail"
             );
-            hospitalService.save(hospital1);
-            hospitalService.save(hospital2);
+            Hospital savedHos1 = hospitalService.save(hospital1);
+            Hospital savedHos2 = hospitalService.save(hospital2);
+
+            Unit unit1 = new Unit(
+                "Maternity",
+                    savedHos1
+            );
+            Unit unit2 = new Unit(
+                "Pediatrics",
+                    savedHos1
+            );
+            Unit unit3 = new Unit(
+                "Chiropractor",
+                    savedHos1
+            );
+            Unit unit4 = new Unit(
+                    "Dentist",
+                    savedHos1
+            );
+            Unit unit5 = new Unit(
+                    "Dentist",
+                    savedHos2
+            );
+            Unit unit6 = new Unit(
+                    "Maternity",
+                    savedHos2
+            );
+            unitService.save(unit1);
+            unitService.save(unit2);
+            unitService.save(unit3);
+            unitService.save(unit4);
+            unitService.save(unit5);
+            unitService.save(unit6);
         };
     }
 

@@ -1,14 +1,18 @@
 package org.supremecorp.hospitalqueuemanagement.services.jpa;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.supremecorp.hospitalqueuemanagement.model.Hospital;
 import org.supremecorp.hospitalqueuemanagement.model.Unit;
 import org.supremecorp.hospitalqueuemanagement.repositories.UnitRepo;
 import org.supremecorp.hospitalqueuemanagement.services.base.UnitService;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
+@Service
 @Transactional
 @RequiredArgsConstructor
 public class UnitServiceJpa implements UnitService {
@@ -21,6 +25,7 @@ public class UnitServiceJpa implements UnitService {
 
     @Override
     public Unit save(Unit unit) throws IOException {
+        unit.setId("un" + UUID.randomUUID());
         return unitRepo.save(unit);
     }
 
@@ -38,5 +43,10 @@ public class UnitServiceJpa implements UnitService {
     @Override
     public void delete(Unit unit) {
         unitRepo.delete(unit);
+    }
+
+    @Override
+    public List<Unit> findAllByHospital(Hospital hospital) {
+        return unitRepo.findAllByHospital(hospital);
     }
 }

@@ -1,12 +1,10 @@
 package org.supremecorp.hospitalqueuemanagement.services.dummy;
 
-import org.springframework.stereotype.Service;
 import org.supremecorp.hospitalqueuemanagement.model.Hospital;
 import org.supremecorp.hospitalqueuemanagement.services.base.HospitalService;
 
 import java.util.List;
 
-@Service
 public class HospitalServiceDummy implements HospitalService {
     @Override
     public List<Hospital> findAll() {

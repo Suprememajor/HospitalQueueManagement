@@ -8,8 +8,8 @@
 <div align="center">
     <h1>Make Appointment</h1>
     <br/>
-    <form action="#" th:action="@{'/save/' + 45}" th:object="${appointment}" method="post">
-        @{/pathvars/single/{id}(id = ${item.id})}
+    <form action="#" th:action="@{'/save'}" th:object="${appointment}" method="post">
+
         <table border="0" cellpadding="10">
             <tr>
                 <td>Patient Name:</td>
@@ -20,7 +20,7 @@
                 <td><input type="text" th:field="*{gender}"></td>
             </tr>
             <tr>
-                <td colspan="2"><button type="submit">Save</td>
+                <td colspan="2"><button type="submit"/>Save</td>
             </tr>
         </table>
     </form>

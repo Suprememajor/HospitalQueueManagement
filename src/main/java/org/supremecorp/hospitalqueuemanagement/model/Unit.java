@@ -17,8 +17,8 @@ public class Unit extends BaseEntity {
     @ManyToOne
     private Hospital hospital;
 
-    public Unit(String id, String name) {
-        super(id);
+    public Unit(String name, Hospital hospital) {
         this.name = name;
+        this.hospital = hospital;
     }
 }

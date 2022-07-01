@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital</title>
+</head>
+<body>
+<div align="center">
+    <h1>Hospitals</h1>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>Unit Name</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="unit : ${unitList}">
+            <td th:text="${unit.name}">Unit Name</td>
+            <td>
+                <a th:href="@{'/new_appointment/' + ${unit.id}}">Make appointment</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

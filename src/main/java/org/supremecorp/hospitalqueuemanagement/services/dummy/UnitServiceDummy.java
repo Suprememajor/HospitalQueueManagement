@@ -1,22 +1,17 @@
 package org.supremecorp.hospitalqueuemanagement.services.dummy;
 
-import org.springframework.stereotype.Service;
+import org.supremecorp.hospitalqueuemanagement.model.Hospital;
 import org.supremecorp.hospitalqueuemanagement.model.Unit;
 import org.supremecorp.hospitalqueuemanagement.services.base.UnitService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-@Service
 public class UnitServiceDummy implements UnitService {
     @Override
     public List<Unit> findAll() {
-        return List.of(
-                new Unit("1", "Pediatrics"),
-                new Unit("2", "Maternity"),
-                new Unit("3", "Dentist"),
-                new Unit("4", "Chiropractor")
-        );
+        return new ArrayList<>();
     }
 
     @Override
@@ -37,5 +32,10 @@ public class UnitServiceDummy implements UnitService {
     @Override
     public void delete(Unit unit) {
 
+    }
+
+    @Override
+    public List<Unit> findAllByHospital(Hospital hospital) {
+        return null;
     }
 }

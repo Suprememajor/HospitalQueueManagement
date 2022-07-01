@@ -16,6 +16,7 @@
             <th>Contact</th>
             <th>Website</th>
             <th>Email</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -25,6 +26,9 @@
             <td th:text="${hospital.contact}">Contact</td>
             <td th:text="${hospital.website}">Website</td>
             <td th:text="${hospital.email}">Email</td>
+            <td>
+                <a th:href="@{'/view/' + ${hospital.id}}">Visit</a>
+            </td>
         </tr>
         </tbody>
     </table>
