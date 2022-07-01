@@ -31,7 +31,7 @@ public class HospitalServiceJpa implements HospitalService {
     }
 
     @Override
-    public void deleteByID(String id) {
+    public void deleteById(String id) {
         hospitalRepo.deleteById(id);
     }
 

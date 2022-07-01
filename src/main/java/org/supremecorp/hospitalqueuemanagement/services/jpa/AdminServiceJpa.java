@@ -14,6 +14,7 @@ import org.supremecorp.hospitalqueuemanagement.services.base.AdminService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Transactional
@@ -30,6 +31,7 @@ public class AdminServiceJpa implements AdminService {
     @Override
     public Admin save(Admin adminDetails) {
         Admin admin = new Admin();
+        admin.setId("ad" + UUID.randomUUID());
         admin.setEmail(adminDetails.getEmail());
         admin.setPassword(passwordEncoder.encode(adminDetails.getPassword()));
         return adminRepo.save(admin);
@@ -42,7 +44,7 @@ public class AdminServiceJpa implements AdminService {
     }
 
     @Override
-    public void deleteByID(String id) {
+    public void deleteById(String id) {
         adminRepo.deleteById(id);
     }
 

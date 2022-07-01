@@ -1,0 +1,42 @@
+package org.supremecorp.hospitalqueuemanagement.services.jpa;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
+import org.supremecorp.hospitalqueuemanagement.model.Unit;
+import org.supremecorp.hospitalqueuemanagement.repositories.UnitRepo;
+import org.supremecorp.hospitalqueuemanagement.services.base.UnitService;
+
+import java.io.IOException;
+import java.util.List;
+
+@Transactional
+@RequiredArgsConstructor
+public class UnitServiceJpa implements UnitService {
+    private final UnitRepo unitRepo;
+
+    @Override
+    public List<Unit> findAll() {
+        return (List<Unit>) unitRepo.findAll();
+    }
+
+    @Override
+    public Unit save(Unit unit) throws IOException {
+        return unitRepo.save(unit);
+    }
+
+    @Override
+    public Unit findById(String id) {
+        return unitRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Unit not found."));
+    }
+
+    @Override
+    public void deleteById(String id) {
+        unitRepo.deleteById(id);
+    }
+
+    @Override
+    public void delete(Unit unit) {
+        unitRepo.delete(unit);
+    }
+}

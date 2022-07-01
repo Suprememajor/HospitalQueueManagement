@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 @Setter
 @Getter
 public class Appointment extends BaseEntity{
-    private int identifier;
+    private String identifier = String.valueOf(System.currentTimeMillis());
     private String patientName;
 
     @Enumerated(EnumType.STRING)

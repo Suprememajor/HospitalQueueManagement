@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Make Appointment</title>
+</head>
+<body>
+<div align="center">
+    <h1>Make Appointment</h1>
+    <br/>
+    <form action="#" th:action="@{'/save/' + 45}" th:object="${appointment}" method="post">
+        @{/pathvars/single/{id}(id = ${item.id})}
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Patient Name:</td>
+                <td><input type="text" th:field="*{patientName}"></td>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <td><input type="text" th:field="*{gender}"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

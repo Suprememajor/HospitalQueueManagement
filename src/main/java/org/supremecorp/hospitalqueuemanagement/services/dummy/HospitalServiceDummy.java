@@ -27,7 +27,7 @@ public class HospitalServiceDummy implements HospitalService {
     }
 
     @Override
-    public void deleteByID(String s) {
+    public void deleteById(String s) {
 
     }
 
