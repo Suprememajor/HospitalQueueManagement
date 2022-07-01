@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.supremecorp.hospitalqueuemanagement.model.Hospital;
 import org.supremecorp.hospitalqueuemanagement.services.base.HospitalService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -17,7 +16,7 @@ public class AppController {
 
     @RequestMapping("/")
     public String viewHomePage(Model model) {
-        List<Hospital> listProducts =new ArrayList<>();
+        List<Hospital> listProducts = hospitalService.findAll();
         model.addAttribute("hospitalList", listProducts);
         return "index";
     }

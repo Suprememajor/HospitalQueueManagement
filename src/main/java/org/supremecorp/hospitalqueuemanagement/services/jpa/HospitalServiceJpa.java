@@ -1,7 +1,6 @@
 package org.supremecorp.hospitalqueuemanagement.services.jpa;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.supremecorp.hospitalqueuemanagement.model.Hospital;
 import org.supremecorp.hospitalqueuemanagement.repositories.HospitalRepo;
@@ -9,7 +8,6 @@ import org.supremecorp.hospitalqueuemanagement.services.base.HospitalService;
 
 import java.util.List;
 
-@Service
 @Transactional
 @RequiredArgsConstructor
 public class HospitalServiceJpa implements HospitalService {
