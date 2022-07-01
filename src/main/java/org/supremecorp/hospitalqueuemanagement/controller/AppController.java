@@ -17,8 +17,8 @@ public class AppController {
 
     @RequestMapping("/")
     public String viewHomePage(Model model) {
-        //List<Hospital> listProducts = hospitalService.findAll();
-        model.addAttribute("hospitalList", new ArrayList<>());
+        List<Hospital> listProducts =new ArrayList<>();
+        model.addAttribute("hospitalList", listProducts);
         return "index";
     }
 
