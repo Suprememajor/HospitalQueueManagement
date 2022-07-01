@@ -1,7 +1,7 @@
 package org.supremecorp.hospitalqueuemanagement.services.jpa;
 
+import com.aspose.barcode.EncodeTypes;
 import com.aspose.barcode.generation.BarcodeGenerator;
-import com.aspose.barcode.generation.EncodeTypes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
