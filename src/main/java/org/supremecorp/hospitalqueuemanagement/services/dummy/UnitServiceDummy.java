@@ -10,7 +10,7 @@ import java.util.List;
 
 public class UnitServiceDummy implements UnitService {
     @Override
-    public List<Unit> findAll() {
+    public List<Unit> listAll() {
         return new ArrayList<>();
     }
 

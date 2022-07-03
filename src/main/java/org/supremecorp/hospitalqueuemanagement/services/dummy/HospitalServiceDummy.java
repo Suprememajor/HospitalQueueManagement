@@ -7,7 +7,7 @@ import java.util.List;
 
 public class HospitalServiceDummy implements HospitalService {
     @Override
-    public List<Hospital> findAll() {
+    public List<Hospital> listAll() {
         return List.of(
                 new Hospital("District Hospital Buea", "Buea, Cameroon", "675438782", "www.seemorebuea.com", "bueahospital@gmail.com"),
                 new Hospital("District Hospital Limbe", "Limbe, Cameroon", "681748782", "www.seemoreLimbe.com", "limbehospital@gmail.com")

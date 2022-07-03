@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 public interface CrudService<T, ID> {
-    List<T> findAll();
+    List<T> listAll();
     T save(T t) throws IOException;
     T findById(ID id);
     void deleteById(ID id);

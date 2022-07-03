@@ -19,7 +19,7 @@ public class UnitServiceJpa implements UnitService {
     private final UnitRepo unitRepo;
 
     @Override
-    public List<Unit> findAll() {
+    public List<Unit> listAll() {
         return (List<Unit>) unitRepo.findAll();
     }
 

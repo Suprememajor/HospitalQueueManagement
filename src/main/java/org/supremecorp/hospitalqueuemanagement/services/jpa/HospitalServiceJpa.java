@@ -17,7 +17,7 @@ public class HospitalServiceJpa implements HospitalService {
     private final HospitalRepo hospitalRepo;
 
     @Override
-    public List<Hospital> findAll() {
+    public List<Hospital> listAll() {
         return (List<Hospital>) hospitalRepo.findAll();
     }
 

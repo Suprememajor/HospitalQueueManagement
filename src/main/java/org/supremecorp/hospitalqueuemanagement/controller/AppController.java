@@ -1,20 +1,23 @@
 package org.supremecorp.hospitalqueuemanagement.controller;
 
+import com.lowagie.text.DocumentException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.supremecorp.hospitalqueuemanagement.model.Appointment;
 import org.supremecorp.hospitalqueuemanagement.model.Hospital;
 import org.supremecorp.hospitalqueuemanagement.model.Unit;
 import org.supremecorp.hospitalqueuemanagement.services.base.AppointmentService;
 import org.supremecorp.hospitalqueuemanagement.services.base.HospitalService;
 import org.supremecorp.hospitalqueuemanagement.services.base.UnitService;
+import org.supremecorp.hospitalqueuemanagement.util.UserPDFExporter;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -26,7 +29,7 @@ public class AppController {
 
     @RequestMapping("/")
     public String viewHomePage(Model model) {
-        List<Hospital> hospitalList = hospitalService.findAll();
+        List<Hospital> hospitalList = hospitalService.listAll();
         model.addAttribute("hospitalList", hospitalList);
         return "index";
     }
@@ -42,7 +45,7 @@ public class AppController {
 
     @RequestMapping("/admin")
     public String viewAdminHomePage(Model model) {
-        List<Hospital> hospitalList = hospitalService.findAll();
+        List<Hospital> hospitalList = hospitalService.listAll();
         model.addAttribute("hospitalList", hospitalList);
         return "admin/index";
     }
@@ -50,7 +53,7 @@ public class AppController {
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String makeAppointment(@ModelAttribute("appointment") Appointment appointment) throws IOException {
         appointmentService.save(appointment);
-        return "redirect:/";
+        return "receipt";
     }
 
     @RequestMapping("/view/{hospitalId}")
@@ -59,6 +62,23 @@ public class AppController {
         List<Unit> unitList = unitService.findAllByHospital(hospital);
         model.addAttribute("unitList", unitList);
         return "hospital";
+    }
+
+    @GetMapping("/receipt/export/pdf")
+    public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
+        response.setContentType("application/pdf");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
+
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=units_" + currentDateTime + ".pdf";
+        response.setHeader(headerKey, headerValue);
+
+        List<Unit> unitList = unitService.listAll();
+
+        UserPDFExporter exporter = new UserPDFExporter(unitList);
+        exporter.export(response);
+
     }
 
 }

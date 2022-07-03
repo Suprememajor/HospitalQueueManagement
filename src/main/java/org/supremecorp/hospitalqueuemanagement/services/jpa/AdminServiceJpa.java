@@ -24,7 +24,7 @@ public class AdminServiceJpa implements AdminService {
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Override
-    public List<Admin> findAll() {
+    public List<Admin> listAll() {
         return (List<Admin>) adminRepo.findAll();
     }
 

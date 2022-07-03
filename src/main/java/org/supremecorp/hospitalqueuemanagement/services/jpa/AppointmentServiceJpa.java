@@ -3,6 +3,7 @@ package org.supremecorp.hospitalqueuemanagement.services.jpa;
 import com.aspose.barcode.EncodeTypes;
 import com.aspose.barcode.generation.BarcodeGenerator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.supremecorp.hospitalqueuemanagement.model.Appointment;
@@ -27,8 +28,13 @@ public class AppointmentServiceJpa implements AppointmentService {
     }
 
     @Override
-    public List<Appointment> findAll() {
-        return (List<Appointment>) appointmentRepo.findAll();
+    public void createPdf() throws IOException {
+
+    }
+
+    @Override
+    public List<Appointment> listAll() {
+        return appointmentRepo.findAll(Sort.by("unit").ascending());
     }
 
     @Override
