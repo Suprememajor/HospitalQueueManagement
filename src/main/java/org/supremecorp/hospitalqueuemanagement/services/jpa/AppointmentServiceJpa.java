@@ -38,12 +38,9 @@ public class AppointmentServiceJpa implements AppointmentService {
     }
 
     @Override
-    public Appointment save(Appointment appointmentDetails) throws IOException {
-        Appointment appointment = new Appointment();
+    public Appointment save(Appointment appointment) throws IOException {
         appointment.setId("ap" + UUID.randomUUID());
         appointment.setIdentifier(String.valueOf(System.currentTimeMillis()));
-        appointment.setPatientName(appointmentDetails.getPatientName());
-        appointment.setGender(appointmentDetails.getGender());
         generateBarcode(appointment);
         return appointmentRepo.save(appointment);
     }

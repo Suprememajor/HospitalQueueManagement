@@ -2,14 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>receipt</title>
+    <title>Confirmation</title>
 </head>
 <body>
 <div align="center">
     <h1>Receipt</h1>
     <br/><br/>
 
-    <a th:href="@{'/receipt/export/pdf'}">Export to PDF</a>
+    <a th:href="@{'/receipt/export/pdf/' + ${appointment.getId()}}">Download Confirmation</a>
 </div>
 
 </body>

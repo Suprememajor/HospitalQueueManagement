@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.supremecorp.hospitalqueuemanagement.model.Appointment;
 import org.supremecorp.hospitalqueuemanagement.model.Hospital;
 import org.supremecorp.hospitalqueuemanagement.model.Unit;
@@ -37,9 +38,8 @@ public class AppController {
     @RequestMapping("/new_appointment/{unitId}")
     public String showNewProductForm(Model model, @PathVariable String unitId) {
         Appointment appointment = new Appointment();
-        appointment.setUnit(unitService.findById(unitId));
-        model.addAttribute("appointment", appointment);
-
+        model.addAttribute("appointmentDetails", appointment);
+        model.addAttribute("unitId", unitId);
         return "new_appointment";
     }
 
@@ -50,10 +50,24 @@ public class AppController {
         return "admin/index";
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String makeAppointment(@ModelAttribute("appointment") Appointment appointment) throws IOException {
-        appointmentService.save(appointment);
-        return "receipt";
+    @RequestMapping(value = "/save/{unitId}", method = RequestMethod.POST)
+    public ModelAndView makeAppointment(@ModelAttribute("appointmentDetails") Appointment appointmentDetails, @PathVariable String unitId) throws IOException {
+        Unit unit = unitService.findById(unitId);
+        appointmentDetails.setUnit(unit);
+        Appointment appointment = appointmentService.save(appointmentDetails);
+        System.out.println(appointment.getUnit().getName());
+        ModelAndView mav = new ModelAndView("receipt");
+        mav.addObject("appointment", appointment);
+        return mav;
+    }
+
+    @RequestMapping("/view/units")
+    public String viewUnits() {
+        List<Unit> units = unitService.listAll();
+        for (Unit unit: units) {
+            System.out.println(unit.getHospital().getName());
+        }
+        return "index";
     }
 
     @RequestMapping("/view/{hospitalId}")
@@ -64,20 +78,21 @@ public class AppController {
         return "hospital";
     }
 
-    @GetMapping("/receipt/export/pdf")
-    public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
+    @GetMapping("/receipt/export/pdf/{appointmentId}")
+    public void exportToPDF(HttpServletResponse response, @PathVariable String appointmentId) throws DocumentException, IOException {
+        Appointment appointment = appointmentService.findById(appointmentId);
         response.setContentType("application/pdf");
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
         String currentDateTime = dateFormatter.format(new Date());
 
         String headerKey = "Content-Disposition";
-        String headerValue = "attachment; filename=units_" + currentDateTime + ".pdf";
+        String headerValue = "attachment; filename=" + appointment.getPatientName() + "_" + currentDateTime + ".pdf";
         response.setHeader(headerKey, headerValue);
 
         List<Unit> unitList = unitService.listAll();
 
-        UserPDFExporter exporter = new UserPDFExporter(unitList);
-        exporter.export(response);
+        UserPDFExporter exporter = new UserPDFExporter();
+        exporter.export(response, appointment);
 
     }
 

@@ -32,7 +32,7 @@ public class UnitServiceJpa implements UnitService {
     @Override
     public Unit findById(String id) {
         return unitRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Unit not found."));
+                .orElseThrow(() -> new RuntimeException("Unit with id " + id + " not found."));
     }
 
     @Override

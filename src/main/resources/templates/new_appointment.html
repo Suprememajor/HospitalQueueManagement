@@ -8,7 +8,7 @@
 <div align="center">
     <h1>Make Appointment</h1>
     <br/>
-    <form action="#" th:action="@{'/save'}" th:object="${appointment}" method="post">
+    <form action="#" th:action="@{'/save/' + ${unitId}}" th:object="${appointmentDetails}" method="post">
 
         <table border="0" cellpadding="10">
             <tr>

@@ -12,12 +12,14 @@
         <thead>
         <tr>
             <th>Unit Name</th>
+            <th>Unit Id</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="unit : ${unitList}">
             <td th:text="${unit.name}">Unit Name</td>
+            <td th:text="${unit.id}">Unit Id</td>
             <td>
                 <a th:href="@{'/new_appointment/' + ${unit.id}}">Make appointment</a>
             </td>

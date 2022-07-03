@@ -1,14 +1,9 @@
 package org.supremecorp.hospitalqueuemanagement;
 
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.supremecorp.hospitalqueuemanagement.model.Hospital;
-import org.supremecorp.hospitalqueuemanagement.model.Unit;
-import org.supremecorp.hospitalqueuemanagement.services.base.HospitalService;
-import org.supremecorp.hospitalqueuemanagement.services.base.UnitService;
 
 @SpringBootApplication
 public class HospitalQueueManagementApplication {
@@ -22,10 +17,10 @@ public class HospitalQueueManagementApplication {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    CommandLineRunner commandLineRunner(HospitalService hospitalService,
-                                        UnitService unitService) {
-        return args -> {
+    //@Bean
+    //CommandLineRunner commandLineRunner(HospitalService hospitalService,
+                                        //UnitService unitService) {
+        /*return args -> {
             Hospital hospital1 = new Hospital(
                     "Buea Regional Hospital",
                     "Buea, Cameroon",
@@ -73,7 +68,6 @@ public class HospitalQueueManagementApplication {
             unitService.save(unit4);
             unitService.save(unit5);
             unitService.save(unit6);
-        };
-    }
-
+        };*/
+    //}
 }
