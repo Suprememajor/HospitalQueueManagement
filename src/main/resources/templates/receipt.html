@@ -6,8 +6,38 @@
 </head>
 <body>
 <div align="center">
-    <h1>Receipt</h1>
+    <h1>Confirmation</h1>
     <br/><br/>
+
+    Hospital name:
+    <span th:text="${appointment.getUnit().getHospital().getName()}"></span>
+    <br>
+
+    Unit name:
+    <span th:text="${appointment.getUnit().getName()}"></span>
+    <br>
+
+    Unique Identifier:
+    <span th:text="${appointment.getIdentifier()}"></span>
+    <br>
+
+    Date: Date selected
+    <span></span>
+    <br>
+
+    Time: Time selected
+    <span></span>
+    <br>
+
+    Patient name:
+    <span th:text="${appointment.getPatientName()}"></span>
+    <br>
+
+    Gender:
+    <span th:text="${appointment.getGender().name()}"></span>
+    <br><br><br>
+
+    <p style="color: red">Please make sure to download the confirmation and print or at the very least, do copy the unique identifier</p>
 
     <a th:href="@{'/receipt/export/pdf/' + ${appointment.getId()}}">Download Confirmation</a>
 </div>

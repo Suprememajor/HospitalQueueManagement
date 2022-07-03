@@ -17,10 +17,10 @@ public class HospitalQueueManagementApplication {
         return new BCryptPasswordEncoder();
     }
 
-    //@Bean
-    //CommandLineRunner commandLineRunner(HospitalService hospitalService,
-                                        //UnitService unitService) {
-        /*return args -> {
+    /*@Bean
+    CommandLineRunner commandLineRunner(HospitalService hospitalService,
+                                        UnitService unitService) {
+        return args -> {
             Hospital hospital1 = new Hospital(
                     "Buea Regional Hospital",
                     "Buea, Cameroon",
@@ -68,6 +68,6 @@ public class HospitalQueueManagementApplication {
             unitService.save(unit4);
             unitService.save(unit5);
             unitService.save(unit6);
-        };*/
-    //}
+        };
+    }*/
 }
