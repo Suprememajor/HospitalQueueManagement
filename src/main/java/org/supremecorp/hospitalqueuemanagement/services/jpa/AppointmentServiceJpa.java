@@ -28,8 +28,8 @@ public class AppointmentServiceJpa implements AppointmentService {
     }
 
     @Override
-    public void createPdf() throws IOException {
-
+    public void resaveAppointment(Appointment appointment) {
+        appointmentRepo.save(appointment);
     }
 
     @Override

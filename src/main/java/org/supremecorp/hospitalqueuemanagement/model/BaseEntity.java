@@ -17,8 +17,4 @@ public class BaseEntity implements Serializable {
     @Id
     private String id;
     private LocalDate localDate = LocalDate.now();
-
-    public BaseEntity(String id) {
-        this.id = id;
-    }
 }

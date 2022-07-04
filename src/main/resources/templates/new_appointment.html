@@ -17,7 +17,28 @@
             </tr>
             <tr>
                 <td>Gender:</td>
-                <td><input type="text" th:field="*{gender}"></td>
+                <td>
+                    <select th:field="*{gender}">
+                        <option value="MALE">MALE</option>
+                        <option value="FEMALE">FEMALE</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Date:</td>
+                <td>
+                    <select th:field="*{date}">
+                        <option th:each="day: ${weekdaysForAMonth}" th:value="${day}" th:text="${day}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Time:</td>
+                <td>
+                    <select th:field="*{time}">
+                        <option th:each="timeslot: ${timeSlots}" th:value="${timeslot}" th:text="${timeslot}"></option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td colspan="2"><button type="submit"/>Save</td>

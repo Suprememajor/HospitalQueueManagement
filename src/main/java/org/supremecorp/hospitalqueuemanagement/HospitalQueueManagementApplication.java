@@ -1,9 +1,14 @@
 package org.supremecorp.hospitalqueuemanagement;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.supremecorp.hospitalqueuemanagement.model.Hospital;
+import org.supremecorp.hospitalqueuemanagement.model.Unit;
+import org.supremecorp.hospitalqueuemanagement.services.base.HospitalService;
+import org.supremecorp.hospitalqueuemanagement.services.base.UnitService;
 
 @SpringBootApplication
 public class HospitalQueueManagementApplication {
@@ -17,7 +22,7 @@ public class HospitalQueueManagementApplication {
         return new BCryptPasswordEncoder();
     }
 
-    /*@Bean
+    @Bean
     CommandLineRunner commandLineRunner(HospitalService hospitalService,
                                         UnitService unitService) {
         return args -> {
@@ -39,27 +44,33 @@ public class HospitalQueueManagementApplication {
             Hospital savedHos2 = hospitalService.save(hospital2);
 
             Unit unit1 = new Unit(
-                "Maternity",
+                    "Maternity",
+                    "For prenatal and antenatal care",
                     savedHos1
             );
             Unit unit2 = new Unit(
-                "Pediatrics",
+                    "Pediatrics",
+                    "For children",
                     savedHos1
             );
             Unit unit3 = new Unit(
-                "Chiropractor",
+                    "Chiropractor",
+                    "For spine adjustments",
                     savedHos1
             );
             Unit unit4 = new Unit(
                     "Dentist",
+                    "For healthier teeth",
                     savedHos1
             );
             Unit unit5 = new Unit(
                     "Dentist",
+                    "For healthier teeth",
                     savedHos2
             );
             Unit unit6 = new Unit(
                     "Maternity",
+                    "For prenatal and antenatal care",
                     savedHos2
             );
             unitService.save(unit1);
@@ -69,5 +80,5 @@ public class HospitalQueueManagementApplication {
             unitService.save(unit5);
             unitService.save(unit6);
         };
-    }*/
+    }
 }

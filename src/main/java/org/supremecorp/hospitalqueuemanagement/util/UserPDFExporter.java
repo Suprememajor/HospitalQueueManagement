@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class UserPDFExporter {
     public void export(HttpServletResponse response, Appointment appointment) throws DocumentException, IOException {
-        Document document = new Document(PageSize.A4);
+        Document document = new Document(PageSize.A5);
         PdfWriter.getInstance(document, response.getOutputStream());
 
         document.open();
@@ -33,11 +33,11 @@ public class UserPDFExporter {
         p.setAlignment(Paragraph.ALIGN_CENTER);
         document.add(p);
 
-        p = new Paragraph("Date: " + "Date selected", font);
+        p = new Paragraph("Date: " + appointment.getDate(), font);
         p.setAlignment(Paragraph.ALIGN_CENTER);
         document.add(p);
 
-        p = new Paragraph("Time: " + "Time selected", font);
+        p = new Paragraph("Time: " + appointment.getTime(), font);
         p.setAlignment(Paragraph.ALIGN_CENTER);
         document.add(p);
 

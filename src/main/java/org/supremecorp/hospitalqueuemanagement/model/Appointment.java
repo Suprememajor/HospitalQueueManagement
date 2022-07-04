@@ -18,6 +18,10 @@ public class Appointment extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    private String time;
+    private String date;
+    private boolean confirmed = false;
+
     @ManyToOne
     private Unit unit;
 }

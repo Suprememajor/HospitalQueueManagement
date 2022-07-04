@@ -18,8 +18,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -36,10 +42,12 @@ public class AppController {
     }
 
     @RequestMapping("/new_appointment/{unitId}")
-    public String showNewProductForm(Model model, @PathVariable String unitId) {
+    public String newAppointment(Model model, @PathVariable String unitId) {
         Appointment appointment = new Appointment();
         model.addAttribute("appointmentDetails", appointment);
         model.addAttribute("unitId", unitId);
+        model.addAttribute("weekdaysForAMonth", weekdaysForAMonth());
+        model.addAttribute("timeSlots", timeSlots());
         return "new_appointment";
     }
 
@@ -50,8 +58,15 @@ public class AppController {
         return "admin/index";
     }
 
+    @RequestMapping("/admin/appointments")
+    public String viewAppointments(Model model) {
+        List<Appointment> appointmentList = appointmentService.listAll();
+        model.addAttribute("appointmentList", appointmentList);
+        return "admin/appointments";
+    }
+
     @RequestMapping(value = "/save/{unitId}", method = RequestMethod.POST)
-    public ModelAndView makeAppointment(@ModelAttribute("appointmentDetails") Appointment appointmentDetails, @PathVariable String unitId) throws IOException {
+    public ModelAndView saveAppointment(@ModelAttribute("appointmentDetails") Appointment appointmentDetails, @PathVariable String unitId) throws IOException {
         Unit unit = unitService.findById(unitId);
         appointmentDetails.setUnit(unit);
         Appointment appointment = appointmentService.save(appointmentDetails);
@@ -61,20 +76,12 @@ public class AppController {
         return mav;
     }
 
-    @RequestMapping("/view/units")
-    public String viewUnits() {
-        List<Unit> units = unitService.listAll();
-        for (Unit unit: units) {
-            System.out.println(unit.getHospital().getName());
-        }
-        return "index";
-    }
-
     @RequestMapping("/view/{hospitalId}")
-    public String viewHospital(Model model, @PathVariable String hospitalId) throws IOException {
+    public String viewHospital(Model model, @PathVariable String hospitalId) {
         Hospital hospital = hospitalService.findById(hospitalId);
         List<Unit> unitList = unitService.findAllByHospital(hospital);
         model.addAttribute("unitList", unitList);
+        model.addAttribute("hospital", hospital.getName());
         return "hospital";
     }
 
@@ -89,11 +96,37 @@ public class AppController {
         String headerValue = "attachment; filename=" + appointment.getPatientName() + "_" + currentDateTime + ".pdf";
         response.setHeader(headerKey, headerValue);
 
-        List<Unit> unitList = unitService.listAll();
-
         UserPDFExporter exporter = new UserPDFExporter();
         exporter.export(response, appointment);
-
     }
 
+    private List<String> weekdaysForAMonth() {
+
+        LocalDate startDate = LocalDate.now().plusDays(1);
+        LocalDate endDate = startDate.plusMonths(1);
+
+        // Predicate: Is a given date is a weekday
+        Predicate<LocalDate> isWeekend = date -> date.getDayOfWeek() == DayOfWeek.SATURDAY
+                || date.getDayOfWeek() == DayOfWeek.SUNDAY;
+
+        // Iterate over stream of all dates and check each day against any weekday
+        List<String> weekdays = startDate.datesUntil(endDate)
+                .filter(isWeekend.negate())
+                .map(date -> date + " " + date.getDayOfWeek())
+                .collect(Collectors.toList());
+
+        return weekdays;
+    }
+
+    private List<String> timeSlots(){
+        int gapInMinutes = 30;
+        int loops = 17;
+        List<String> times = new ArrayList<>();
+        LocalTime time = LocalTime.of(9, 0);
+        for (int i = 1; i <= loops; i++){
+            times.add(time.toString());
+            time = time.plusMinutes(gapInMinutes);
+        }
+        return times;
+    }
 }

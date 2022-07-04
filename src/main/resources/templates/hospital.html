@@ -6,20 +6,20 @@
 </head>
 <body>
 <div align="center">
-    <h1>Hospitals</h1>
+    <h1 th:text="${hospital}"></h1>
     <br/><br/>
     <table border="1" cellpadding="10">
         <thead>
         <tr>
             <th>Unit Name</th>
-            <th>Unit Id</th>
+            <th>Description</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="unit : ${unitList}">
             <td th:text="${unit.name}">Unit Name</td>
-            <td th:text="${unit.id}">Unit Id</td>
+            <td th:text="${unit.description}">Unit Id</td>
             <td>
                 <a th:href="@{'/new_appointment/' + ${unit.id}}">Make appointment</a>
             </td>

@@ -13,12 +13,13 @@ import javax.persistence.ManyToOne;
 @NoArgsConstructor
 public class Unit extends BaseEntity {
     private String name;
-
+    private String description;
     @ManyToOne
     private Hospital hospital;
 
-    public Unit(String name, Hospital hospital) {
+    public Unit(String name, String description, Hospital hospital) {
         this.name = name;
+        this.description = description;
         this.hospital = hospital;
     }
 }
