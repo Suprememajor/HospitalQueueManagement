@@ -70,7 +70,6 @@ public class AppController {
         Unit unit = unitService.findById(unitId);
         appointmentDetails.setUnit(unit);
         Appointment appointment = appointmentService.save(appointmentDetails);
-        System.out.println(appointment.getUnit().getName());
         ModelAndView mav = new ModelAndView("receipt");
         mav.addObject("appointment", appointment);
         return mav;

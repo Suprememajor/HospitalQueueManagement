@@ -34,7 +34,7 @@ public class AppointmentServiceJpa implements AppointmentService {
 
     @Override
     public List<Appointment> listAll() {
-        return appointmentRepo.findAll(Sort.by("unit").ascending());
+        return appointmentRepo.findAll(Sort.by("date").and(Sort.by("time")).ascending());
     }
 
     @Override
