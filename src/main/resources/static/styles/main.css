@@ -1,5 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+}
+
 h1 {
     font-family: sans-serif;
     font-size: 1.5em;
     text-transform: uppercase;
+}
+
+.grid {
+    display: grid;
+    display: -ms-grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+.articles {
+    border-radius: 10px;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
 }

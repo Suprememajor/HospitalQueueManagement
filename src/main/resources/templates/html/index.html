@@ -10,7 +10,7 @@
     <h1>Hospitals</h1>
     <br/><br/>
     <div class="grid">
-        <article th:each="hospital : ${hospitalList}">
+        <article class="articles" th:each="hospital : ${hospitalList}">
             <div class="head">
                 <h2 th:text="${hospital.name}"></h2>
             </div>
