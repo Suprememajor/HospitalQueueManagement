@@ -42,6 +42,10 @@ h1 {
     font-size: 2.5em;
     font-weight: bold;
     text-transform: uppercase;
+    padding: 1rem;
+    border-radius: 5px;
+    background: teal;
+    color: #fff;
 }
 
 .grid {
