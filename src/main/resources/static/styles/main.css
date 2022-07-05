@@ -69,6 +69,17 @@ h1 {
     color: teal;
 }
 
+.articles .content {
+    display: flex;
+    display: -ms-flexbox;
+    margin-bottom: 0.5rem;
+}
+
+.articles .content .fas {
+    margin-right: 0.6rem;
+    color: teal;
+}
+
 .articles .action {
     margin-top: 3rem;
 }

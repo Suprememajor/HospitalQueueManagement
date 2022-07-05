@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>Hospitals</title>
     <link th:href="@{/styles/main.css}" rel="stylesheet" />
+    <link th:href="@{/fontawesome/css/all.min.css}" rel="stylesheet" />
   </head>
   <body>
     <div class="container">
@@ -16,9 +17,19 @@
               <h2 th:text="${hospital.name}"></h2>
             </div>
             <div class="content">
+              <i class="fas fa-building" aria-hidden="true"></i>
               <h4 th:text="${hospital.location}"></h4>
+            </div>
+            <div class="content">
+              <i class="fas fa-building" aria-hidden="true"></i>
               <h4 th:text="${hospital.contact}"></h4>
+            </div>
+            <div class="content">
+              <i class="fas fa-building" aria-hidden="true"></i>
               <h4 th:text="${hospital.website}"></h4>
+            </div>
+            <div class="content">
+              <i class="fas fa-building" aria-hidden="true"></i>
               <h4 th:text="${hospital.email}"></h4>
             </div>
             <div class="action">
