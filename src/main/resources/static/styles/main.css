@@ -64,6 +64,11 @@ h1 {
     margin-bottom: 1rem;
 }
 
+.articles .head h2 {
+    font-weight: bold;
+    color: teal;
+}
+
 .articles .action {
     margin-top: 3rem;
 }
@@ -73,6 +78,15 @@ h1 {
     border-radius: 5px;
     background: teal;
     color: #fff;
+    text-decoration: none;
+    opacity: 0.6;
+    transition: 0.2s ease-in-out;
+    -webkit-transition: 0.2s ease-in-out;
+}
+
+.articles .action a:hover,
+.articles .action a:focus-within {
+    opacity: 1;
 }
 
 @media screen and (max-width: 900px) {
