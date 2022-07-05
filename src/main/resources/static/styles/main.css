@@ -31,7 +31,6 @@ body {
 
 .layout {
     width: 100%;
-    min-height: 100vh;
     display: flex;
     display: -ms-flexbox;
     align-items: center;
@@ -46,6 +45,7 @@ h1 {
 
 .grid {
     display: grid;
+    width: 100%;
     display: -ms-grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 1rem;
