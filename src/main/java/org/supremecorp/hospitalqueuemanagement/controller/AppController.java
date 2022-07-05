@@ -38,7 +38,7 @@ public class AppController {
     public String viewHomePage(Model model) {
         List<Hospital> hospitalList = hospitalService.listAll();
         model.addAttribute("hospitalList", hospitalList);
-        return "index";
+        return "html/index";
     }
 
     @RequestMapping("/new_appointment/{unitId}")
@@ -48,7 +48,7 @@ public class AppController {
         model.addAttribute("unitId", unitId);
         model.addAttribute("weekdaysForAMonth", weekdaysForAMonth());
         model.addAttribute("timeSlots", timeSlots());
-        return "new_appointment";
+        return "html/new_appointment";
     }
 
     @RequestMapping("/admin")
@@ -70,7 +70,7 @@ public class AppController {
         Unit unit = unitService.findById(unitId);
         appointmentDetails.setUnit(unit);
         Appointment appointment = appointmentService.save(appointmentDetails);
-        ModelAndView mav = new ModelAndView("receipt");
+        ModelAndView mav = new ModelAndView("html/receipt");
         mav.addObject("appointment", appointment);
         return mav;
     }
@@ -81,7 +81,7 @@ public class AppController {
         List<Unit> unitList = unitService.findAllByHospital(hospital);
         model.addAttribute("unitList", unitList);
         model.addAttribute("hospital", hospital.getName());
-        return "hospital";
+        return "html/hospital";
     }
 
     @GetMapping("/receipt/export/pdf/{appointmentId}")
