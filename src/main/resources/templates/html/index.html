@@ -9,7 +9,24 @@
 <div align="center">
     <h1>Hospitals</h1>
     <br/><br/>
-    <table border="1" cellpadding="10">
+    <div class="grid">
+        <article th:each="hospital : ${hospitalList}">
+            <div class="head">
+                <h2 th:text="${hospital.name}"></h2>
+            </div>
+            <div class="content">
+                <h4 th:text="${hospital.location}"></h4>
+                <h4 th:text="${hospital.contact}"></h4>
+                <h4 th:text="${hospital.website}"></h4>
+                <h4 th:text="${hospital.email}"></h4>
+            </div>
+            <div class="action">
+                <a th:href="@{'/view/' + ${hospital.id}}">Visit</a>
+            </div>
+        </article>
+    </div>
+
+    <table style="border-collapse: collapse;" border="1" cellpadding="10">
         <thead>
         <tr>
             <th>Hospital Name</th>
