@@ -64,9 +64,9 @@ h1 {
 }
 
 .articles .action a {
-    padding: 1rem;
+    padding: 0.8rem 1rem;
     border-radius: 5px;
-    margin-top: 1rem;
+    margin-top: 3rem;
     background: teal;
     color: #fff;
 }
