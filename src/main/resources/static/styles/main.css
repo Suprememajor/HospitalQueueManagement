@@ -63,10 +63,13 @@ h1 {
     margin-bottom: 1rem;
 }
 
+.articles .action {
+    margin-top: 3rem;
+}
+
 .articles .action a {
     padding: 0.8rem 1rem;
     border-radius: 5px;
-    margin-top: 3rem;
     background: teal;
     color: #fff;
 }
