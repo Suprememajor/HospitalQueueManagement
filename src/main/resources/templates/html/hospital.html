@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Hospital</title>
     <link th:href="@{/styles/main.css}" rel="stylesheet" />
-</head>
-<body>
-<div class="container">
-    <h1 th:text="${hospital}"></h1>
-    <br/><br/>
-    <table border="1" cellpadding="10">
-        <thead>
-        <tr>
-            <th>Unit Name</th>
-            <th>Description</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="unit : ${unitList}">
-            <td th:text="${unit.name}">Unit Name</td>
-            <td th:text="${unit.description}">Unit Id</td>
-            <td>
-                <a th:href="@{'/new_appointment/' + ${unit.id}}">Make appointment</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <br>
-    <p th:each="paragraph : ${hospitalText}" th:text="${paragraph}"></p>
-</div>
-</body>
+  </head>
+  <body>
+    <div class="container">
+      <h1 th:text="${hospital}"></h1>
+      <br /><br />
+      <div style="overflow-x: auto">
+        <table border="1" cellpadding="10">
+          <thead>
+            <tr>
+              <th>Unit Name</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="unit : ${unitList}">
+              <td th:text="${unit.name}">Unit Name</td>
+              <td th:text="${unit.description}">Unit Id</td>
+              <td>
+                <a th:href="@{'/new_appointment/' + ${unit.id}}"
+                  >Make appointment</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br />
+      <p th:each="paragraph : ${hospitalText}" th:text="${paragraph}"></p>
+    </div>
+  </body>
 </html>
