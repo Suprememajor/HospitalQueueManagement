@@ -1,9 +1,14 @@
 package org.supremecorp.hospitalqueuemanagement;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.supremecorp.hospitalqueuemanagement.model.Hospital;
+import org.supremecorp.hospitalqueuemanagement.model.Unit;
+import org.supremecorp.hospitalqueuemanagement.services.base.HospitalService;
+import org.supremecorp.hospitalqueuemanagement.services.base.UnitService;
 
 @SpringBootApplication
 public class HospitalQueueManagementApplication {
@@ -17,7 +22,7 @@ public class HospitalQueueManagementApplication {
         return new BCryptPasswordEncoder();
     }
 
-    /*@Bean
+    @Bean
     CommandLineRunner commandLineRunner(HospitalService hospitalService,
                                         UnitService unitService) {
         return args -> {
@@ -28,6 +33,10 @@ public class HospitalQueueManagementApplication {
                     "www.buearegionalhospitalwebsite.com",
                     "buearegionalhospital@gmail"
             );
+            hospital1.getTexts().add("First paragragh");
+            hospital1.getTexts().add("Second paragragh");
+            hospital1.getTexts().add("Third paragragh");
+            hospital1.getTexts().add("Fourth paragragh");
             Hospital hospital2 = new Hospital(
                     "Limbe Regional Hospital",
                     "Limbe, Cameroon",
@@ -35,6 +44,10 @@ public class HospitalQueueManagementApplication {
                     "www.limberegionalhospitalwebsite.com",
                     "limberegionalhospital@gmail"
             );
+            hospital2.getTexts().add("First paragragh");
+            hospital2.getTexts().add("Second paragragh");
+            hospital2.getTexts().add("Third paragragh");
+            hospital2.getTexts().add("Fourth paragragh");
             Hospital savedHos1 = hospitalService.save(hospital1);
             Hospital savedHos2 = hospitalService.save(hospital2);
 
@@ -75,5 +88,5 @@ public class HospitalQueueManagementApplication {
             unitService.save(unit5);
             unitService.save(unit6);
         };
-    }*/
+    }
 }

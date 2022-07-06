@@ -4,7 +4,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Setter
@@ -16,6 +19,9 @@ public class Hospital extends BaseEntity{
     private String contact;
     private String website;
     private String email;
+
+    @ElementCollection
+    private List<String> texts = new ArrayList<>();
 
     public Hospital(String name, String location, String contact, String website, String email) {
         this.name = name;

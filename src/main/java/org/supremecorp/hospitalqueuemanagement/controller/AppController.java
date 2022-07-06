@@ -81,6 +81,7 @@ public class AppController {
         List<Unit> unitList = unitService.findAllByHospital(hospital);
         model.addAttribute("unitList", unitList);
         model.addAttribute("hospital", hospital.getName());
+        model.addAttribute("hospitalText", hospital.getTexts());
         return "html/hospital";
     }
 
