@@ -33,10 +33,10 @@ public class HospitalQueueManagementApplication {
                     "www.buearegionalhospitalwebsite.com",
                     "buearegionalhospital@gmail"
             );
-            hospital1.getTexts().add("First paragragh");
-            hospital1.getTexts().add("Second paragragh");
-            hospital1.getTexts().add("Third paragragh");
-            hospital1.getTexts().add("Fourth paragragh");
+            hospital1.getTexts().add("First In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.");
+            hospital1.getTexts().add("Second In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.");
+            hospital1.getTexts().add("Third In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.");
+            hospital1.getTexts().add("Fourth In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.");
             Hospital hospital2 = new Hospital(
                     "Limbe Regional Hospital",
                     "Limbe, Cameroon",
@@ -44,10 +44,10 @@ public class HospitalQueueManagementApplication {
                     "www.limberegionalhospitalwebsite.com",
                     "limberegionalhospital@gmail"
             );
-            hospital2.getTexts().add("First paragragh");
-            hospital2.getTexts().add("Second paragragh");
-            hospital2.getTexts().add("Third paragragh");
-            hospital2.getTexts().add("Fourth paragragh");
+            hospital2.getTexts().add("First In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.");
+            hospital2.getTexts().add("Second In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.");
+            hospital2.getTexts().add("Third In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.");
+            hospital2.getTexts().add("Fourth In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.");
             Hospital savedHos1 = hospitalService.save(hospital1);
             Hospital savedHos2 = hospitalService.save(hospital2);
 
