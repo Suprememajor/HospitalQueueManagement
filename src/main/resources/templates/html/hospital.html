@@ -32,7 +32,13 @@
         </table>
       </div>
       <br />
-      <p class="descriptions" th:each="paragraph : ${hospitalText}" th:text="${paragraph}"></p>
+      <div>
+        <p
+          class="descriptions"
+          th:each="paragraph : ${hospitalText}"
+          th:text="${paragraph}"
+        ></p>
+      </div>
     </div>
   </body>
 </html>
