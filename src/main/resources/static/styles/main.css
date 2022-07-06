@@ -71,6 +71,10 @@ h1 {
     mask-repeat: 1.5rem;
 }
 
+.home__intro img {
+    width: 100%;
+}
+
 .grid {
   display: grid;
   width: 100%;
