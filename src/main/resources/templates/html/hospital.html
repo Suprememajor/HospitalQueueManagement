@@ -33,13 +33,16 @@
         </table>
       </div>
       <br />
-      <div style="width: 100%; margin-top: 2rem;">
-        <i style="margin-right: 0.8rem;" class="fas fa-check-circle" aria-hidden="true"></i>
-        <p
-          class="descriptions"
-          th:each="paragraph : ${hospitalText}"
-          th:text="${paragraph}"
-        ></p>
+      <div
+        th:each="paragraph : ${hospitalText}"
+        style="width: 100%; margin-top: 2rem; display: flex"
+      >
+        <i
+          style="margin-right: 0.8rem"
+          class="fas fa-check-circle"
+          aria-hidden="true"
+        ></i>
+        <p class="descriptions" th:text="${paragraph}"></p>
       </div>
     </div>
   </body>
