@@ -115,7 +115,28 @@ td,
 th {
   border: 1px solid #dddddd;
   text-align: left;
-  padding: 10px;
+  padding: 1.5rem 1rem;
+}
+
+th {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+td a {
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    background: rgb(61, 245, 126);
+    opacity: 0.8;
+    transition: 0.2s ease-in-out;
+    -webkit-transition: 0.2s ease-in-out;
+}
+
+td a:hover,
+td a:focus-within {
+    opacity: 1;
 }
 
 tr:nth-child(even) {
