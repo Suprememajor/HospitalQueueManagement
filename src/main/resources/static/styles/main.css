@@ -153,8 +153,9 @@ tr:nth-child(even) {
 
 .descriptions {
     text-align: left;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
     font-size: 17px;
+    line-height: 1.2;
     color: rgba(0, 0, 0, 0.8);
     width: 950px;
 }
