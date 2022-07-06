@@ -180,6 +180,16 @@ table input, select {
     border-radius: 3px;
 }
 
+table button {
+    padding: 0.6rem;
+    color: #fff;
+    background: teal;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 17px;
+}
+
 .descriptions {
   text-align: left;
   margin-bottom: 1rem;

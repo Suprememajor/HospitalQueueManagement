@@ -10,6 +10,7 @@
       <h1>Make Appointment</h1>
       <br />
       <form
+        style="width: 100%; overflow-x: auto"
         action="#"
         th:action="@{'/save/' + ${unitId}}"
         th:object="${appointmentDetails}"

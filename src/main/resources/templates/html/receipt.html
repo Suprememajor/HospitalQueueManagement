@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Confirmation</title>
     <link th:href="@{/styles/main.css}" rel="stylesheet" />
-</head>
-<body>
-<div align="center">
-    <h1>Confirmation</h1>
-    <br/><br/>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Confirmation</h1>
+      <br /><br />
 
-    Hospital name:
-    <span th:text="${appointment.getUnit().getHospital().getName()}"></span>
-    <br>
+      Hospital name:
+      <span th:text="${appointment.getUnit().getHospital().getName()}"></span>
+      <br />
 
-    Unit name:
-    <span th:text="${appointment.getUnit().getName()}"></span>
-    <br>
+      Unit name:
+      <span th:text="${appointment.getUnit().getName()}"></span>
+      <br />
 
-    Unique Identifier:
-    <span th:text="${appointment.getIdentifier()}"></span>
-    <br>
+      Unique Identifier:
+      <span th:text="${appointment.getIdentifier()}"></span>
+      <br />
 
-    Date:
-    <span th:text="${appointment.getDate()}"></span>
-    <br>
+      Date:
+      <span th:text="${appointment.getDate()}"></span>
+      <br />
 
-    Time:
-    <span th:text="${appointment.getTime()}"></span>
-    <br>
+      Time:
+      <span th:text="${appointment.getTime()}"></span>
+      <br />
 
-    Patient name:
-    <span th:text="${appointment.getPatientName()}"></span>
-    <br>
+      Patient name:
+      <span th:text="${appointment.getPatientName()}"></span>
+      <br />
 
-    Gender:
-    <span th:text="${appointment.getGender().name()}"></span>
-    <br><br><br>
+      Gender:
+      <span th:text="${appointment.getGender().name()}"></span>
+      <br /><br /><br />
 
-    <p style="color: red">Please make sure to download the confirmation and print or at the very least, do copy the unique identifier</p>
+      <p style="color: red">
+        Please make sure to download the confirmation and print or at the very
+        least, do copy the unique identifier
+      </p>
 
-    <a th:href="@{'/receipt/export/pdf/' + ${appointment.getId()}}">Download Confirmation</a>
-</div>
-
-</body>
+      <a th:href="@{'/receipt/export/pdf/' + ${appointment.getId()}}"
+        >Download Confirmation</a
+      >
+    </div>
+  </body>
 </html>
