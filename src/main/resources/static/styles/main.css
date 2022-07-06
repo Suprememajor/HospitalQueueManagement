@@ -28,13 +28,6 @@ body {
   padding: 2rem 6vw;
 }
 
-.banner {
-    background: url("./doc.jpg") no-repeat;
-    background-size: cover;
-    background-position: center;
-    padding: 1rem;
-}
-
 .layout {
   width: 100%;
   display: flex;
