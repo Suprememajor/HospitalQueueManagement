@@ -33,6 +33,12 @@ public class AppointmentServiceJpa implements AppointmentService {
     }
 
     @Override
+    public Appointment findByIdentifier(String identifier) {
+        return appointmentRepo.findByIdentifier(identifier)
+                .orElse(new Appointment());
+    }
+
+    @Override
     public List<Appointment> listAll() {
         return appointmentRepo.findAll(Sort.by("date").and(Sort.by("time")).ascending());
     }

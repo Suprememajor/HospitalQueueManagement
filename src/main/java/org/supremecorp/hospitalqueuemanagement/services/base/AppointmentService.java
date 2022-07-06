@@ -7,4 +7,6 @@ import java.io.IOException;
 public interface AppointmentService extends CrudService<Appointment, String> {
     void generateBarcode(Appointment appointment) throws IOException;
     void resaveAppointment(Appointment appointment);
+
+    Appointment findByIdentifier(String identifier);
 }
