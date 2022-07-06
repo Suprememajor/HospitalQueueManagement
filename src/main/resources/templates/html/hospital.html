@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>Hospital</title>
     <link th:href="@{/styles/main.css}" rel="stylesheet" />
+    <link th:href="@{/fontawesome/css/all.min.css}" rel="stylesheet" />
   </head>
   <body>
     <div class="container">
@@ -33,7 +34,7 @@
       </div>
       <br />
       <div style="width: 100%; margin-top: 2rem;">
-        <i style="margin-right: 0.8rem;" class="fas fa-check" aria-hidden="true"></i>
+        <i style="margin-right: 0.8rem;" class="fas fa-check-circle" aria-hidden="true"></i>
         <p
           class="descriptions"
           th:each="paragraph : ${hospitalText}"
