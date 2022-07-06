@@ -1,51 +1,63 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Make Appointment</title>
     <link th:href="@{/styles/main.css}" rel="stylesheet" />
-</head>
-<body>
-<div align="center">
-    <h1>Make Appointment</h1>
-    <br/>
-    <form action="#" th:action="@{'/save/' + ${unitId}}" th:object="${appointmentDetails}" method="post">
-
+  </head>
+  <body>
+    <div class="container">
+      <h1>Make Appointment</h1>
+      <br />
+      <form
+        action="#"
+        th:action="@{'/save/' + ${unitId}}"
+        th:object="${appointmentDetails}"
+        method="post"
+      >
         <table border="0" cellpadding="10">
-            <tr>
-                <td>Patient Name:</td>
-                <td><input type="text" th:field="*{patientName}"></td>
-            </tr>
-            <tr>
-                <td>Gender:</td>
-                <td>
-                    <select th:field="*{gender}">
-                        <option value="MALE">MALE</option>
-                        <option value="FEMALE">FEMALE</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Date:</td>
-                <td>
-                    <select th:field="*{date}">
-                        <option th:each="day: ${weekdaysForAMonth}" th:value="${day}" th:text="${day}"></option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Time:</td>
-                <td>
-                    <select th:field="*{time}">
-                        <option th:each="timeslot: ${timeSlots}" th:value="${timeslot}" th:text="${timeslot}"></option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2"><button type="submit"/>Save</td>
-            </tr>
+          <tr>
+            <td>Patient Name:</td>
+            <td><input type="text" th:field="*{patientName}" /></td>
+          </tr>
+          <tr>
+            <td>Gender:</td>
+            <td>
+              <select th:field="*{gender}">
+                <option value="MALE">MALE</option>
+                <option value="FEMALE">FEMALE</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Date:</td>
+            <td>
+              <select th:field="*{date}">
+                <option
+                  th:each="day: ${weekdaysForAMonth}"
+                  th:value="${day}"
+                  th:text="${day}"
+                ></option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Time:</td>
+            <td>
+              <select th:field="*{time}">
+                <option
+                  th:each="timeslot: ${timeSlots}"
+                  th:value="${timeslot}"
+                  th:text="${timeslot}"
+                ></option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"><button type="submit" />Save</td>
+          </tr>
         </table>
-    </form>
-</div>
-</body>
+      </form>
+    </div>
+  </body>
 </html>
