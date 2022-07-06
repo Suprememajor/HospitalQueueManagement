@@ -19,7 +19,6 @@ body {
 
 .container {
     width: 100%;
-    min-height: 100vh;
     display: flex;
     display: -ms-flexbox;
     align-items: center;
@@ -106,13 +105,13 @@ h1 {
     opacity: 1;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
     .grid {
         grid-template-columns: 1fr 1fr;
     }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 950px) {
     .grid {
         grid-template-columns: 1fr;
     }
