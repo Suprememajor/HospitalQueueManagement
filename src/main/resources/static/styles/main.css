@@ -109,6 +109,7 @@ table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  overflow-x: scroll;
 }
 
 td,
@@ -116,6 +117,7 @@ th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 1.5rem 1rem;
+  white-space: nowrap;
 }
 
 th {
@@ -132,6 +134,7 @@ td a {
     opacity: 0.8;
     transition: 0.2s ease-in-out;
     -webkit-transition: 0.2s ease-in-out;
+    white-space: nowrap;
 }
 
 td a:hover,
