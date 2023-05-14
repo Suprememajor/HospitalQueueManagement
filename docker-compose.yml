@@ -1,0 +1,38 @@
+version: "3.8"
+services:
+  management-service:
+    container_name: management-service
+    build:
+      context: ./
+    volumes:
+      - ./src:/build/src
+      - ./pom.xml:/build/pom.xml
+      - /build/target
+    ports:
+      - "8080:8080"
+    environment:
+      DATASOURCE_URL: jdbc:postgresql://postgres:5432/health
+      DATASOURCE_USERNAME: health
+      DATASOURCE_PASSWORD: health
+    stdin_open: true
+    tty: true
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    container_name: health-database
+    image: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/backup:/var/lib/postgresql/backup
+    healthcheck:
+      test: [ 'CMD-SHELL', 'pg_isready -U health' ]
+      interval: 1s
+      timeout: 1s
+      retries: 30
+    environment:
+      POSTGRES_USER: 'health'
+      POSTGRES_PASSWORD: 'health'
+      POSTGRES_DB: 'health'
